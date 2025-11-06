@@ -16,6 +16,16 @@ namespace UTILS
         int n_max,
         float* opacity_new,
         float* scale_new);
+
+    void SimpleComputeRelocation(
+        int P,
+        float* opacity_old,
+        float* scale_old,
+        int* N,
+        float* binoms,
+        int n_max,
+        float* opacity_new,
+        float* scale_new);
 }
 
 #endif

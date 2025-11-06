@@ -72,6 +72,24 @@ __global__ void compute_relocation_simple(
     // --- YOUR MODIFIED RULES END HERE ---
 }
 
+void UTILS::SimpleComputeRelocation(
+    int P,
+    float* opacity_old,
+    float* scale_old,
+    int* N,
+    float* binoms,
+    int n_max,
+    float* opacity_new,
+    float* scale_new)
+{
+	int num_blocks = (P + 255) / 256;
+	dim3 block(256, 1, 1);
+	dim3 grid(num_blocks, 1, 1);
+	// compute_relocation<<<grid, block>>>(P, opacity_old, scale_old, N, binoms, n_max, opacity_new, scale_new);
+    compute_relocation_simple<<<grid, block>>>(P, opacity_old, scale_old, N, opacity_new, scale_new);
+}
+
+
 void UTILS::ComputeRelocation(
     int P,
     float* opacity_old,
@@ -86,6 +104,6 @@ void UTILS::ComputeRelocation(
 	dim3 block(256, 1, 1);
 	dim3 grid(num_blocks, 1, 1);
 	// compute_relocation<<<grid, block>>>(P, opacity_old, scale_old, N, binoms, n_max, opacity_new, scale_new);
-    compute_relocation_simple<<<grid, block>>>(P, opacity_old, scale_old, N, binoms, n_max, opacity_new, scale_new);
+    compute_relocation<<<grid, block>>>(P, opacity_old, scale_old, N, binoms, n_max, opacity_new, scale_new);
 }
 
