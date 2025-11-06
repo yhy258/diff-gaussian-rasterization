@@ -73,3 +73,10 @@ std::tuple<torch::Tensor, torch::Tensor> ComputeRelocationCUDA(
 		torch::Tensor& N,
 		torch::Tensor& binoms,
 		const int n_max);
+
+std::tuple<torch::Tensor, torch::Tensor> SimpleComputeRelocationCUDA(
+		torch::Tensor& opacity_old,
+		torch::Tensor& scale_old,
+		torch::Tensor& N,
+		torch::Tensor& binoms,
+		const int n_max);

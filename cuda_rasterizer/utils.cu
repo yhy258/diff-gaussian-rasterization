@@ -35,7 +35,7 @@ __global__ void compute_relocation(
         scale_new[idx * 3 + i] = coeff * scale_old[idx * 3 + i];
 }
 
-__global__ void compute_relocation_simple(
+__global__ void simple_compute_relocation(
     int P,
     float* opacity_old,
     float* scale_old,
@@ -86,7 +86,7 @@ void UTILS::SimpleComputeRelocation(
 	dim3 block(256, 1, 1);
 	dim3 grid(num_blocks, 1, 1);
 	// compute_relocation<<<grid, block>>>(P, opacity_old, scale_old, N, binoms, n_max, opacity_new, scale_new);
-    compute_relocation_simple<<<grid, block>>>(P, opacity_old, scale_old, N, opacity_new, scale_new);
+    simple_compute_relocation<<<grid, block>>>(P, opacity_old, scale_old, N, opacity_new, scale_new);
 }
 
 
